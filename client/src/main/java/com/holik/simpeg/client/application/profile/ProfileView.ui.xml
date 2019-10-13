@@ -1,0 +1,213 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+        xmlns:g='urn:import:com.google.gwt.user.client.ui' 
+        xmlns:client="urn:import:gwt.material.design.addins.client"       
+xmlns:m='urn:import:gwt.material.design.client.ui'>
+
+    <m:MaterialPanel>
+        <!--
+        <m:MaterialRow paddingTop="100">           
+            <m:MaterialTextBox fieldType="OUTLINED" label="Masukan NIP BARU" grid="s12" allowBlank="false" autoValidate="true"/>                   
+            
+        </m:MaterialRow>
+        !-->
+        <m:MaterialRow paddingTop="100">
+            <m:MaterialColumn grid="s12">
+             <m:MaterialCard backgroundColor="GREY_DARKEN_1">
+              <m:MaterialCardContent textColor="WHITE">
+                
+                <m:MaterialRow marginBottom="0">
+                    <client:webp.MaterialWebpImage url="/img/avatar3.png" width="50" height="50" circle="true" float="LEFT" marginRight="20"/>
+                    <m:MaterialLabel fontWeight="BOLD" text="FENDY ANDERSEN GERUNGAN, SIP" fontSize="1.2em" float="LEFT" marginTop="20"/>
+                    <m:MaterialLabel text="2d"  textColor="GREY" float="RIGHT" marginTop="20" marginRight="20"/>
+                </m:MaterialRow> 
+                
+                <m:MaterialRow marginBottom="0" padding="20">
+                    <m:MaterialLabel text="Pemerintah Kab. Minahasa" />
+                    <m:MaterialRow marginBottom="0">
+                      <m:MaterialChip margin="4" text="#PNS" backgroundColor="BLUE" textColor="WHITE" float="LEFT"/>
+                      <m:MaterialChip margin="4" text="#Aktif" backgroundColor="BLUE" textColor="WHITE" float="LEFT"/>
+                      <m:MaterialChip margin="4" text="#Seksi Pembukuan dan Pendataan Barang Milik Daerah" backgroundColor="BLUE" textColor="WHITE" float="LEFT"/>
+                      <m:MaterialChip margin="4" text="#Kepala Seksi Pembukuan dan Pendataan Barang Milik Daerah" backgroundColor="BLUE" textColor="WHITE" float="LEFT"/>
+                    </m:MaterialRow>   
+                 </m:MaterialRow>    
+                
+                <m:MaterialColumn grid="s12">
+                    <m:MaterialTab ui:field="tab" indicatorColor="YELLOW" shadow="1">
+                     <m:MaterialTabItem waves="YELLOW" grid="s4">
+                      <m:MaterialLink text="Data Pribadi" href="#tab1" textColor="WHITE"/>
+                     </m:MaterialTabItem>
+                     <m:MaterialTabItem waves="YELLOW" grid="s4">
+                      <m:MaterialLink text="Posisi dan Jabatan" href="#tab2" textColor="WHITE"/>
+                     </m:MaterialTabItem>
+                     <m:MaterialTabItem waves="YELLOW" grid="s4">
+                      <m:MaterialLink text="Data Lainnya" href="#tab3" textColor="WHITE"/>
+                     </m:MaterialTabItem>
+                    </m:MaterialTab>
+                </m:MaterialColumn>
+                
+                <m:MaterialColumn m:id="tab1" grid="s12">
+                    <m:MaterialTextBox grid="s6 m6" label="NIP Baru" /> 
+                    <m:MaterialTextBox grid="s6 m6" label="NIP Lama" /> 
+                    <m:MaterialTextBox grid="s4 m4" label="Nama" />
+                    <m:MaterialTextBox grid="s4 m4" label="Gelar Depan" />
+                    <m:MaterialTextBox grid="s4 m4" label="Gelar Belakang" />
+                    <m:MaterialTextBox grid="s6 m6" label="Tempat Lahir" />                   
+                    <m:MaterialDatePicker ui:field="dplahir" grid="s6 m6" selectionType="YEAR" detectOrientation="true" placeholder="Tanggal Lahir" /> 
+                    <m:MaterialListBox grid="s4 m4" placeholder="Agama" >
+                        <m:html.Option text="Islam" />
+                        <m:html.Option text="Kristen" />
+                        <m:html.Option text="Budha" />
+                        <m:html.Option text="Hindu" />
+                        <m:html.Option text="Konghucu" />
+                        <m:html.Option text="Agama Lainnya" />
+                        </m:MaterialListBox> 
+                    <m:MaterialTextBox grid="s4 m4" label="Email" /> 
+                    <m:MaterialListBox grid="s4 m4" placeholder="Jenis Kelamin" >
+                        <m:html.Option text="Pria" />
+                        <m:html.Option text="Wanita" />
+                    </m:MaterialListBox> 
+                    <m:MaterialListBox grid="s6 m6" placeholder="Jenis Dokumen" >
+                        <m:html.Option text="Kartu Tanda Penduduk" />
+                        <m:html.Option text="Passport" />
+                        <m:html.Option text="Surat Izin Mengemudi" />
+                        <m:html.Option text="Identitas Lainnya" />
+                    </m:MaterialListBox> 
+                    <m:MaterialTextBox grid="s6 m6" label="Nomor Dokumen" /> 
+                    <m:MaterialTextBox grid="s12 m12" label="Alamat" /> 
+                    <m:MaterialTextBox grid="s6 m6" label="Nomor HP" />
+                    <m:MaterialTextBox grid="s6 m6" label="Nomor Telp" /> 
+                    <m:MaterialListBox grid="s12 m12" placeholder="Jenis Pegawai" >
+                        <m:html.Option text="PNS Pemerintah Pusat" />
+                        <m:html.Option text="PNS Pemerintah Daerah" />
+                        <m:html.Option text="Pegawai Pemerintah dengan Perjanjian Kerja" />
+                        <m:html.Option text="Honorer" />
+                        <m:html.Option text="Pegawai Abdi" />                       
+                    </m:MaterialListBox> 
+                    <m:MaterialListBox grid="s6 m6" placeholder="Kedudukan PNS" >
+                        <m:html.Option text="Aktif" />
+                        <m:html.Option text="Tugas Belajar" />
+                        <m:html.Option text="Pensiun" />
+                        <m:html.Option text="Diberhentikan" />
+                    </m:MaterialListBox> 
+                    <m:MaterialListBox grid="s6 m6" placeholder="Status Pegawai" >
+                        <m:html.Option text="PNS" />
+                        <m:html.Option text="CPNS" />
+                    </m:MaterialListBox> 
+                    <m:MaterialDatePicker selectionType="YEAR" ui:field="tmtpns" grid="s4 m4"  detectOrientation="true" placeholder="TMT PNS" /> 
+                    <m:MaterialTextBox grid="s4 m4" label="Nomor Seri KARPEG" /> 
+                    <m:MaterialDatePicker selectionType="YEAR" ui:field="tmtcpns" grid="s4 m4"  detectOrientation="true" placeholder="TMT CPNS" /> 
+                    <m:MaterialTextBox grid="s6 m6" label="Tingkat Pendidikan" /> 
+                    <m:MaterialTextBox grid="s6 m6" label="Diklat Struktural" />
+                    <m:MaterialTextBox grid="s8 m8" label="Pendidikan Terakhir" /> 
+                    <m:MaterialTextBox grid="s4 m4" label="Tahun Lulus" />
+                </m:MaterialColumn>
+                
+                <m:MaterialColumn m:id="tab2" grid="s12">
+                    <m:MaterialListBox grid="s6 m6" placeholder="Instansi Induk" >
+                        <m:html.Option text="Pemerintah Kab. Minahasa" />
+                        <m:html.Option text="Badan Kepegawaian Negara" />
+                    </m:MaterialListBox> 
+                    <m:MaterialListBox grid="s6 m6" placeholder="Instansi Kerja" >
+                        <m:html.Option text="Pemerintah Kab. Minahasa" />
+                        <m:html.Option text="Badan Kepegawaian Negara" />
+                    </m:MaterialListBox> 
+                    <m:MaterialListBox grid="s6 m6" placeholder="Satuan Kerja Induk">
+                        <m:html.Option text="Badan Kepegawaian Dan Sumber Daya Manusia" />
+                        <m:html.Option text="Sekretariat Daerah" />
+                    </m:MaterialListBox>
+                    <m:MaterialListBox grid="s6 m6" placeholder="Satuan Kerja" >
+                        <m:html.Option text="Badan Kepegawaian Dan Sumber Daya Manusia" />
+                        <m:html.Option text="Sekretariat Daerah" />
+                    </m:MaterialListBox>
+                    <m:MaterialListBox grid="s12 m12" placeholder="Unit Organisasi" >
+                        <m:html.Option text="SEKSI PENGOLAHAN DATA DAN DISEMINASI INFORMASI KEPEGAWAIAN" />
+                        <m:html.Option text="SEKSI PENGOLAHAN ARSIP KEPEGAWAIAN INSTANSI KABUPATEN/KOTA" />
+                    </m:MaterialListBox>
+                    <m:MaterialListBox grid="s12 m12" placeholder="Unit Organisasi Induk" >
+                        <m:html.Option text="Badan Kepegawaian Dan Sumber Daya Manusia" />
+                        <m:html.Option text="Sekretariat Daerah" />
+                    </m:MaterialListBox>
+                    <m:MaterialListBox grid="s12 m12" placeholder="Jenis Jabatan" >
+                        <m:html.Option text="Jabatan Fungsional Tertentu" />
+                        <m:html.Option text="Jabatan Fungsional Umum" />
+                    </m:MaterialListBox>
+                    <m:MaterialListBox grid="s6 m6"  placeholder="Jabatan Struktural" >
+                        <m:html.Option text="KEPALA SEKSI PENGELOLAAN ARSIP KEPEGAWAIAN INSTANSI VERTIKAL DAN PROVINSI" />
+                        <m:html.Option text="KEPALA SEKSI PENGELOLAAN ARSIP KEPEGAWAIAN INSTANSI KABUPATEN/KOTA" />
+                    </m:MaterialListBox>              
+                    <m:MaterialDatePicker selectionType="YEAR" ui:field="tmtstruktural" grid="s6 m6"  detectOrientation="true" placeholder="TMT Jabatan Struktural" />    
+                    <m:MaterialListBox grid="s6 m6" placeholder="Jabatan Fungsional Tertentu" >
+                        <m:html.Option text="Pranata Komputer Pelaksana" />
+                        <m:html.Option text="Pranata Komputer Ahli Pertama" />
+                    </m:MaterialListBox>
+                    <m:MaterialDatePicker selectionType="YEAR" ui:field="tmtjft" grid="s6 m6"  detectOrientation="true" placeholder="TMT Jabatan Fungsional Tertentu" />                      
+                    <m:MaterialListBox grid="s6 m6" placeholder="Jabatan Fungsional Umum" >
+                        <m:html.Option text="Bendahara" />
+                        <m:html.Option text="Pengelola Barang Milik Daearah" />
+                    </m:MaterialListBox>
+                    <m:MaterialDatePicker selectionType="YEAR" ui:field="tmtjfu" grid="s6 m6"  detectOrientation="true" placeholder="TMT Fungsional Umum" />
+                    <m:MaterialListBox grid="s12 m12" placeholder="Lokasi Kerja" >
+                        <m:html.Option text="Manado" />
+                        <m:html.Option text="Tondano" />
+                    </m:MaterialListBox>
+                    <m:MaterialTextBox grid="s4 m4" label="Golongan Ruang Awal" />
+                    <m:MaterialTextBox grid="s4 m4" label="Golongan Ruang Terakhir" />
+                    <m:MaterialTextBox grid="s4 m4" label="TMT Golongan" />
+                    <m:MaterialTextBox grid="s6 m4" label="Gaji Pokok" />
+                    <m:MaterialTextBox grid="s3 m3" label="Masa Kerja (Tahun)" />
+                    <m:MaterialTextBox grid="s3 m3" label="Masa Kerja (Bulan)" />
+                    <m:MaterialTextBox grid="s6 m6" label="Nomor SPMT" />
+                    <m:MaterialDatePicker ui:field="dpspmt" grid="s6"  detectOrientation="true" placeholder="Tanggal SPMT" />
+                    <m:MaterialListBox grid="s4 m4" placeholder="KPPN" >
+                        <m:html.Option text="Manado" />
+                        <m:html.Option text="Tondano" />
+                    </m:MaterialListBox>
+                    <m:MaterialListBox grid="s4 m4" placeholder="KTUA" >
+                        <m:html.Option text="Manado" />
+                        <m:html.Option text="Tondano" />
+                    </m:MaterialListBox>
+                    <m:MaterialListBox grid="s4 m4" placeholder="TASPEN" >
+                        <m:html.Option text="Manado" />
+                        <m:html.Option text="Tondano" />
+                    </m:MaterialListBox>
+                </m:MaterialColumn>
+                
+                <m:MaterialColumn m:id="tab3" grid="s12">
+                    <m:MaterialListBox grid="s12 m12" placeholder="Status Perkawakinan" >
+                        <m:html.Option text="Menikah" />
+                        <m:html.Option text="Belum Menikah" />
+                    </m:MaterialListBox>
+                    <m:MaterialIntegerBox grid="s6 m6" label="Suami/Istri" />
+                    <m:MaterialIntegerBox grid="s6 m6" label="Jumlah Anak" />
+                    <m:MaterialTextBox grid="s4 m4" label="Nomor Surat Sehat Dokter" />
+                    <m:MaterialTextBox grid="s4 m4" label="Nama Dokter" />
+                    <m:MaterialDatePicker selectionType="YEAR" ui:field="dpdokter" grid="s4 m4"  detectOrientation="true" placeholder="Tanggal" />
+                    <m:MaterialTextBox grid="s6 m6" label="Nomor Surat Keterangan Bebas Narkoba" />                    
+                    <m:MaterialDatePicker selectionType="YEAR" ui:field="dpnarkoba" grid="s6 m6"  detectOrientation="true" placeholder="Tanggal" />
+                    <m:MaterialTextBox grid="s6 m6" label="Nomor SKCK Kepolisian" />                    
+                    <m:MaterialDatePicker selectionType="YEAR" ui:field="dpskck" grid="s6 m6"  detectOrientation="true" placeholder="Tanggal" />
+                    <m:MaterialTextBox grid="s6 m6" label="Akta Kelahiran" />                    
+                    <m:MaterialDatePicker selectionType="YEAR" ui:field="dpaktalahir" grid="s6 m6"  detectOrientation="true" placeholder="Tanggal" />
+                    <m:MaterialTextBox grid="s6 m6" label="Akta Kematian" />                    
+                    <m:MaterialDatePicker selectionType="YEAR" ui:field="dpaktamati" grid="s6 m6"  detectOrientation="true" placeholder="Tanggal" />
+                    <m:MaterialTextBox grid="s6 m6" label="Nomor ASKES" />                    
+                    <m:MaterialTextBox grid="s6 m6" label="Nomor TASPEN" />
+                    <m:MaterialTextBox grid="s6 m6" label="NPWP" />                    
+                   <m:MaterialDatePicker selectionType="YEAR" ui:field="dpnpwp" grid="s6 m6"  detectOrientation="true" placeholder="Tanggal" />
+                    <m:MaterialTextArea grid="s12 m12" label="Bahasa" />                    
+                   
+                </m:MaterialColumn>
+                
+              </m:MaterialCardContent>
+              
+              <m:MaterialCardAction>              
+                <m:MaterialLink text="Link 1" iconType="POLYMER"/>
+              </m:MaterialCardAction>
+            
+             </m:MaterialCard>
+            </m:MaterialColumn>    
+        </m:MaterialRow>         
+    </m:MaterialPanel>
+   
+</ui:UiBinder>

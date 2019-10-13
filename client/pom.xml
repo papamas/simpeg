@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.holik.simpeg</groupId>
+    <artifactId>client</artifactId>
+    <version>2.1.1</version>
+    <packaging>war</packaging>
+
+    <name>client simpeg</name>
+    <description>Simpeg Client Version 2.1.1</description>
+
+    <properties>
+        <gwt.version>2.8.0</gwt.version>
+        <gwtp.version>1.6</gwtp.version>
+        <gmd.version>2.1.1</gmd.version>
+        <gb3.version>0.9.4</gb3.version>
+        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <maven-resource-plugin.version>3.0.2</maven-resource-plugin.version>
+        <target.jdk>1.8</target.jdk>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <output.dir>${project.build.directory}/${project.build.finalName}</output.dir>
+        <war.classes.dir>${output.dir}/WEB-INF/classes</war.classes.dir>
+       
+    </properties>
+
+    <build>
+        <!-- Generate compiled stuff in the folder used for developing mode -->
+        <outputDirectory>${war.classes.dir}</outputDirectory>
+        <plugins>
+        <!-- Compilation settings -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                        <source>${target.jdk}</source>
+                        <target>${target.jdk}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            
+            <!-- Copy static web files before executing gwt:run
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                                <goal>exploded</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                        <webappDirectory>${outputFolder}</webappDirectory>
+                </configuration>
+            </plugin> -->
+            <!-- Copy webapp resources -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resource-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${output.dir}/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/webapp/</directory>                                                                       
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+                       
+            <!-- GWT Maven Plugin -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>${gwt.version}</version>
+                <configuration>
+                    <sourceLevel>1.8</sourceLevel>
+                    <module>com.holik.simpeg.SimpegAppboot</module>
+                    <extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
+                    <runTarget>index.html</runTarget>
+                    <persistentunitcachedir>${project.build.directory}</persistentunitcachedir>
+                    <webappDirectory>${output.dir}</webappDirectory>
+                    <deploy>${project.build.directory}/gwt-deploy</deploy>
+                    <generateJsInteropExports>true</generateJsInteropExports>
+                    <launcherDir>${project.build.directory}/classes/public</launcherDir>
+                    <!--
+                    <codeServerPort>4456
+                    </codeServerPort>
+                    <style>DETAILED</style>!-->
+                 </configuration>
+                <!--
+                <configuration>
+                        <strict>true</strict>
+                        <logLevel>INFO</logLevel>
+                        <runTarget>index.html</runTarget>
+                        <module>com.holik.simpeg.SimpegAppboot</module>
+                        <hostedWebapp>${output.dir}</hostedWebapp>
+			<webappDirectory>${output.dir}</webappDirectory>!-->
+                        <!--
+                        <webappDirectory>src/main/webapp</webappDirectory>
+                        <useCache>false</useCache>
+                        !-->
+                <!--</configuration>!-->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>                           
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- packaging into WebJar -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- Internal Modul Simpage!-->
+        <dependency>
+            <groupId>com.holik.simpeg</groupId>
+            <artifactId>shared</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>        
+        <dependency>
+            <groupId>com.holik.simpeg</groupId>
+            <artifactId>shared</artifactId>
+            <version>${project.version}</version>
+            <classifier>sources</classifier>
+            <scope>provided</scope>
+        </dependency>
+        <!-- GWT !-->
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>${gwt.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-servlet</artifactId>
+            <version>${gwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwt.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- GWTP !-->
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-mvp-client</artifactId>
+            <version>${gwtp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-mvp-shared</artifactId>
+            <version>${gwtp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.gwtplatform.extensions</groupId>
+            <artifactId>dispatch-rest-delegates</artifactId>
+            <version>${gwtp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- GwtMaterial -->
+        <dependency>
+            <groupId>com.github.gwtmaterialdesign</groupId>
+            <artifactId>gwt-material</artifactId>
+            <version>${gmd.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.gwtmaterialdesign</groupId>
+            <artifactId>gwt-material-themes</artifactId>
+            <version>${gmd.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.gwtmaterialdesign</groupId>
+            <artifactId>gwt-material-addins</artifactId>
+            <version>${gmd.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.gwtmaterialdesign</groupId>
+            <artifactId>gwt-material-table</artifactId>
+            <version>${gmd.version}</version>
+        </dependency>
+        
+        <!-- GWT BOoostrap!-->
+        <dependency>
+                <groupId>org.gwtbootstrap3</groupId>
+                <artifactId>gwtbootstrap3</artifactId>
+                <version>${gb3.version}</version>
+                <scope>provided</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.google.gwt</groupId>
+                        <artifactId>gwt-user</artifactId>
+                    </exclusion>
+                </exclusions>
+        </dependency>
+        <dependency>
+                <groupId>org.gwtbootstrap3</groupId>
+                <artifactId>gwtbootstrap3-extras</artifactId>
+                <version>${gb3.version}</version>
+                <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

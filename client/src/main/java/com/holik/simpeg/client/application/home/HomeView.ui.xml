@@ -1,0 +1,15 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+        xmlns:g='urn:import:com.google.gwt.user.client.ui'
+xmlns:m='urn:import:gwt.material.design.client.ui'>
+    <m:MaterialPanel>       
+        <m:MaterialRow paddingTop="120">
+             <m:MaterialColumn grid="s12 m4 l4" offset="m4 l4">
+                 <m:MaterialPanel ui:field="onlinePanel" textAlign="CENTER">
+                     <m:MaterialIcon marginTop="120" textColor="GREY_DARKEN_1" iconType="HOME" iconSize="LARGE"/>
+                     <m:MaterialLabel text="simpeg ASN" textColor="GREY_DARKEN_1" fontSize="2em"/>
+                     <m:MaterialLabel text="Sistem Informasi Kepegawaian ASN Version 2.1.1" textColor="GREY_DARKEN_1" fontSize="0.8em"/>
+                 </m:MaterialPanel>
+             </m:MaterialColumn>
+         </m:MaterialRow>               
+    </m:MaterialPanel>
+</ui:UiBinder>

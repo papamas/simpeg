@@ -1,0 +1,68 @@
+package com.holik.simpeg.client.application.list;
+
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.holik.simpeg.shared.entity.Task;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
+import com.gwtplatform.mvp.client.ViewImpl;
+import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import org.gwtbootstrap3.client.ui.Anchor;
+import org.gwtbootstrap3.client.ui.ListGroup;
+import org.gwtbootstrap3.client.ui.ListGroupItem;
+import org.gwtbootstrap3.client.ui.base.HasHref;
+import org.gwtbootstrap3.client.ui.html.Paragraph;
+   
+
+class ListView extends ViewWithUiHandlers<ListHandlers> implements ListPresenter.MyView {
+    @UiField
+    Paragraph message;
+    @UiField
+    ListGroup tasks;
+
+    
+    @Inject
+    ListView(Binder binder) {
+        initWidget(binder.createAndBindUi(this));
+    }
+
+   
+    @Override
+    public void setTasks(Iterable<Task> tasks) {
+        this.tasks.clear();
+        ListHandlers handlers = getUiHandlers();
+        for(Task task : tasks) {
+            ListGroupItem item = new ListGroupItem();
+            Anchor a = new Anchor(task.getTitle(), HasHref.EMPTY_HREF);
+            a.addClickHandler(e -> {
+                handlers.viewTask(task.getId());
+            });
+            item.add(a);
+            this.tasks.add(item);
+        }
+        
+        if (message.getElement().getStyle() != null) {
+            message.setVisible(this.tasks.getWidgetCount() == 0);
+        }
+        
+    }
+
+    
+    @UiHandler("add")
+    public void onAddClick(ClickEvent event) {
+        getUiHandlers().onAdd();
+    }
+
+    @UiHandler("refresh")
+    public void onRefreshClick(ClickEvent event) {
+        getUiHandlers().onRefresh();
+    }
+
+    interface Binder extends UiBinder<Widget, ListView> {
+    }
+
+     
+    
+}
