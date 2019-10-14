@@ -16,12 +16,6 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
-
-//import com.nuvola.myproject.client.NameTokens;
-//import com.nuvola.myproject.client.login.LoginPresenter.MyProxy;
-//import com.nuvola.myproject.client.login.LoginPresenter.MyView;
-//import com.nuvola.myproject.client.services.UserService;
-//oimport com.nuvola.myproject.client.security.CurrentUser;
 import com.holik.simpeg.client.place.NameTokens;
 import com.holik.simpeg.client.security.CurrentUser;
 import com.holik.simpeg.client.services.UserService;
@@ -66,7 +60,8 @@ public class LoginPresenter extends Presenter<LoginPresenter.MyView,
     }
 
     private void sendLoginRequest(String username, String password) {
-        dispatcher.execute(userService.login(username, password), new AsyncCallback<Void>() {
+        dispatcher.execute(userService.login(username, password), 
+                new AsyncCallback<Void>() {
             @Override
             public void onSuccess(Void result) {
                 onLoginSuccess();
@@ -81,11 +76,12 @@ public class LoginPresenter extends Presenter<LoginPresenter.MyView,
 
     private void onLoginSuccess() {
         currentUser.setLoggedIn(true);
-        PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.HOME).build();
+        PlaceRequest placeRequest = new PlaceRequest.Builder()
+                .nameToken(NameTokens.HOME).build();
         placeManager.revealPlace(placeRequest);
     }
 
     private void onLoginFailure() {
-        Window.alert("Wrong login or password.");
+        Window.alert("Kesalahan username atau password.");
     }
 }

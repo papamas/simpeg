@@ -12,7 +12,7 @@
     <description>Simpeg Client Version 2.1.1</description>
 
     <properties>
-        <gwt.version>2.8.0</gwt.version>
+        <gwt.version>2.8.2</gwt.version>
         <gwtp.version>1.6</gwtp.version>
         <gmd.version>2.1.1</gmd.version>
         <gb3.version>0.9.4</gb3.version>
@@ -94,9 +94,10 @@
                     <runTarget>index.html</runTarget>
                     <persistentunitcachedir>${project.build.directory}</persistentunitcachedir>
                     <webappDirectory>${output.dir}</webappDirectory>
-                    <deploy>${project.build.directory}/gwt-deploy</deploy>
+                    <hostedWebapp>${output.dir}</hostedWebapp>
+                    <deploy>${project.build.directory}/deploy</deploy>
                     <generateJsInteropExports>true</generateJsInteropExports>
-                    <launcherDir>${project.build.directory}/classes/public</launcherDir>
+                    <launcherDir>${project.build.directory}/classes/simpeg</launcherDir>
                     <!--
                     <codeServerPort>4456
                     </codeServerPort>
@@ -111,7 +112,7 @@
                         <hostedWebapp>${output.dir}</hostedWebapp>
 			<webappDirectory>${output.dir}</webappDirectory>!-->
                         <!--
-                        <webappDirectory>src/main/webapp</webappDirectory>
+                        mvn clean spring-boot:run
                         <useCache>false</useCache>
                         !-->
                 <!--</configuration>!-->
@@ -152,7 +153,7 @@
         <dependency>
             <groupId>com.holik.simpeg</groupId>
             <artifactId>shared</artifactId>
-            <version>${project.version}</version>
+            <version>2.1.1</version>
             <scope>provided</scope>
         </dependency>        
         <dependency>

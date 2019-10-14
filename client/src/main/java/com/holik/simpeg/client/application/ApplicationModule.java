@@ -9,10 +9,13 @@ import com.holik.simpeg.client.application.menu.MenuModule;
 import com.holik.simpeg.client.application.profile.ProfileModule;
 import com.holik.simpeg.client.application.task.TaskModule;
 import com.holik.simpeg.client.login.LoginModule;
+import com.holik.simpeg.client.services.ServiceModule;
 
 public class ApplicationModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
+        
+       
         install(new LoginModule());
         install(new MenuModule());
         install(new HomeModule());
@@ -20,6 +23,7 @@ public class ApplicationModule extends AbstractPresenterModule {
         install(new ListModule());
         install(new TaskModule());
         install(new EditModule());
+        
 
         bindPresenter(ApplicationPresenter.class,
                 ApplicationPresenter.MyView.class,

@@ -14,15 +14,15 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.22.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.1.2.RELEASE</version>
+		<relativePath/> 
+                <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-                <jetty.version>9.2.17.v20160517</jetty.version>
                 <output.dir>${project.build.directory}/${project.build.finalName}</output.dir>
 	</properties>
 
@@ -51,12 +51,7 @@
                     <artifactId>spring-boot-starter-web</artifactId>
                     
                 </dependency>
-                <!--
-                <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-jetty</artifactId>
-		</dependency>
-                !-->
+               
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -66,18 +61,21 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-security</artifactId>
                 </dependency>
-                <!--
+                
+                <!-- spring security test -->
+                <dependency>
+                    <groupId>org.springframework.security</groupId>
+                    <artifactId>spring-security-test</artifactId>
+                    <scope>test</scope>
+                </dependency>
+
+
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-devtools</artifactId>
                     <scope>runtime</scope>
-                </dependency>
-                !-->
-                <dependency>
-                    <groupId>org.hsqldb</groupId>
-                    <artifactId>hsqldb</artifactId>
-                    <scope>runtime</scope>
-                </dependency>
+                </dependency> 
+                
                 
                 <dependency>
                     <groupId>com.h2database</groupId>
@@ -89,6 +87,15 @@
                     <groupId>javax.servlet</groupId>
                     <artifactId>jstl</artifactId>
                 </dependency>
+                
+                <dependency>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpclient</artifactId>
+                    <version>4.5.7</version>
+                    <scope>test</scope>
+                </dependency>
+
+
                     
 	</dependencies>
 

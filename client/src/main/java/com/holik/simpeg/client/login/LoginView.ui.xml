@@ -34,11 +34,9 @@
                <m:MaterialImage url="img/avatar3.png" type="CIRCLE" addStyleNames="{style.imgProfile} z-depth-1"/>
                <m:MaterialTextBox ui:field="login"  type="EMAIL" placeholder="Email"/>
                <m:MaterialTextBox ui:field="password" type="PASSWORD" placeholder="Password" />
-               <m:MaterialButton ui:field="submit" waves="LIGHT" text="Log In" width="100%"/>
+               <m:MaterialButton ui:field="submit" waves="LIGHT" text="Sing In" width="100%"/>
                 <m:MaterialRow addStyleNames="{style.rowAction}">
-                <m:MaterialColumn grid="s12 m12 l6">
-                 <m:MaterialCheckBox text="Keep me logged in"/>
-                </m:MaterialColumn>
+                
                </m:MaterialRow>
               </m:MaterialPanel>
              </m:MaterialPanel>

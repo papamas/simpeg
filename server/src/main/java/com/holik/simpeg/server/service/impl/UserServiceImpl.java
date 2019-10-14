@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 //import com.nuvola.myproject.server.security.LoggedInChecker;
@@ -33,7 +34,9 @@ public class UserServiceImpl implements UserService {
         if (username.equals(USER_TEST)) {
             User user = new User();
             user.setLogin(USER_TEST);
-            user.setPassword(new ShaPasswordEncoder().encodePassword("password", null));
+            //user.setPassword("password");
+            user.setPassword(new BCryptPasswordEncoder().
+                    encode("password"));
 
             return user;
         } else {

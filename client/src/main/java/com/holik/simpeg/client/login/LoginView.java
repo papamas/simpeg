@@ -7,9 +7,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.PasswordTextBox;
-import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import gwt.material.design.client.ui.MaterialTextBox;
@@ -31,8 +28,8 @@ public class LoginView extends
 
     @UiHandler("submit")
     void onSubmitClicked(ClickEvent event) {
-        GWT.log("User pressed a button.", null);
-        Window.alert("ada seorang User menekan tombol pada  button");
-        //getUiHandlers().login(login.getText(), password.getText());
+        GWT.log("User submit Login.", null);
+        //Window.alert("hello" + login.getText() +"menekan tombol pada  button");
+        getUiHandlers().login(login.getText(), password.getText());
     }
 }

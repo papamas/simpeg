@@ -7,6 +7,7 @@ import com.holik.simpeg.server.security.HttpLogoutSuccessHandler;
 import com.holik.simpeg.server.security.SimpegUserDetailsService;
 import com.holik.simpeg.shared.Parameters;
 import com.holik.simpeg.shared.ResourcePaths;
+import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,14 +15,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+//import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
@@ -29,29 +34,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @ComponentScan(value = "com.holik.**.security")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String LOGIN_PATH = ResourcePaths.User.ROOT + ResourcePaths.User.LOGIN;
-
-    /*
-    
-    @Override
-    protected void configure(HttpSecurity http) throws Exception
-    {
-        http
-         .csrf().disable()
-         .authorizeRequests().anyRequest().authenticated()
-         .and()
-         .httpBasic();
-    }
-  
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth)
-            throws Exception
-    {
-        auth.inMemoryAuthentication()
-            .withUser("admin")
-            .password("password")
-            .roles("USER");
-    }
-    */
     
     @Autowired
     private SimpegUserDetailsService userDetailsService;
@@ -80,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userDetailsService);
-        authenticationProvider.setPasswordEncoder(new ShaPasswordEncoder());
+        authenticationProvider.setPasswordEncoder(new BCryptPasswordEncoder());
 
         return authenticationProvider;
     }
@@ -96,17 +78,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
    
 
+    /* config Cross Origin Policy*/
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:8888"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", 
+                "PUT","DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(Arrays.asList("x-gwt-module-base",
+                "authorization", "Content-Type", "Origin"));
+        //configuration.setExposedHeaders(Arrays.asList("x-auth-token"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /*
-        .antMatchers("/js/**",
-                            "/css/**",
-                            "/img/**",
-                            "/webjars/**").permitAll()
-                .anyRequest().authenticated()
-        
-        */
-        http.csrf().disable()
+             
+        http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/simpeg/**").permitAll()

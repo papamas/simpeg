@@ -56,7 +56,7 @@
             <g:HTMLPanel ui:field="menu"/>
             <m:MaterialLink text="Home" iconType="HOME" href="#home"/>
             <m:MaterialLink text="Profile ASN" iconType="PERSON" href="#profile"/>
-            <m:MaterialLink text="Login" iconType="POLYMER" href="#login"/>
+            <m:MaterialLink text="List" iconType="POLYMER" href="#list"/>
             <m:MaterialLink text="LoginUI" iconType="POLYMER" href="#loginui"/>
         </m:MaterialSideNavPush>
 

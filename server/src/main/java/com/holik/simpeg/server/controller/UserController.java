@@ -17,12 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.ResponseEntity.ok;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 //import static com.nuvola.myproject.shared.ResourcePaths.User.LOGIN;
 //import static com.nuvola.myproject.shared.ResourcePaths.User.ROOT;
 
+
 @RestController
+@CrossOrigin(origins = "http://127.0.0.1:8888",
+        allowedHeaders = "x-gwt-module-base",
+        maxAge = 3600)
 @RequestMapping(value = ROOT,
         produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
@@ -33,7 +39,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = LOGIN, method = GET)
+    @RequestMapping(value = LOGIN, method = POST)
     @PermitAll
     ResponseEntity<Boolean> isCurrentUserLoggedIn() {
         return new ResponseEntity<>(userService.isCurrentUserLoggedIn(), OK);
