@@ -7,31 +7,46 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
-import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import gwt.material.design.client.ui.MaterialLabel;
+import gwt.material.design.client.ui.MaterialListBox;
+import gwt.material.design.client.ui.MaterialListValueBox;
+import gwt.material.design.client.ui.MaterialToast;
 import org.gwtbootstrap3.client.ui.Anchor;
 import org.gwtbootstrap3.client.ui.ListGroup;
 import org.gwtbootstrap3.client.ui.ListGroupItem;
 import org.gwtbootstrap3.client.ui.base.HasHref;
-import org.gwtbootstrap3.client.ui.html.Paragraph;
    
 
 class ListView extends ViewWithUiHandlers<ListHandlers> implements ListPresenter.MyView {
     @UiField
-    Paragraph message;
+    MaterialLabel message;
+    
+    /*
     @UiField
-    ListGroup tasks;
-
+    MaterialListValueBox<Task> listBox;
+    */
     
     @Inject
     ListView(Binder binder) {
         initWidget(binder.createAndBindUi(this));
     }
 
+    
    
     @Override
     public void setTasks(Iterable<Task> tasks) {
-        this.tasks.clear();
+        /*
+        listBox.addValueChangeHandler(valueChangeEvent -> 
+                MaterialToast.fireToast("VALUE [ " +
+                        valueChangeEvent.getValue().getTitle() + " ]"));
+        for (Task task : .getAllHeroes()) {
+            listBox.addItem(hero, hero.getName());
+        }
+        //this.tasks.clear();
+        */
+        
+        /*
         ListHandlers handlers = getUiHandlers();
         for(Task task : tasks) {
             ListGroupItem item = new ListGroupItem();
@@ -45,7 +60,7 @@ class ListView extends ViewWithUiHandlers<ListHandlers> implements ListPresenter
         
         if (message.getElement().getStyle() != null) {
             message.setVisible(this.tasks.getWidgetCount() == 0);
-        }
+        }*/
         
     }
 

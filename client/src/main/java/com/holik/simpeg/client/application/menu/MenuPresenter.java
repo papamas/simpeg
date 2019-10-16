@@ -10,8 +10,12 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
 import static com.holik.simpeg.client.place.NameTokens.HOME;
 import static com.holik.simpeg.client.place.NameTokens.LIST;
+import static com.holik.simpeg.client.place.NameTokens.PROFILE;
+import static com.holik.simpeg.client.place.NameTokens.TASK;
 
-public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView> implements MenuHandlers {
+public class MenuPresenter 
+        extends PresenterWidget<MenuPresenter.MyView> 
+        implements MenuHandlers {
 
     private final PlaceManager placeManager;
 
@@ -27,6 +31,11 @@ public class MenuPresenter extends PresenterWidget<MenuPresenter.MyView> impleme
         Places.using(placeManager).reveal(HOME);
     }
 
+    @Override
+    public void onProfile() {
+        Places.using(placeManager).reveal(PROFILE);
+    }
+    
     @Override
     public void onTasks() {
         Places.using(placeManager).reveal(LIST);

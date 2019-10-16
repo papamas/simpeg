@@ -8,13 +8,13 @@
 	<version>2.1.1</version>
 	<packaging>pom</packaging>
 
-	<name>Simpeg GWTP GMD 2.1.1</name>
+	<name>Simpeg ASN with GWTP, GMD and Spring Boot</name>
 	<description>Root module simpeg</description>
 
 
 	<modules>
         <module>shared</module>
-	    <module>server</module>
+	<module>server</module>
         <module>client</module>
 	</modules>
 

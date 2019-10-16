@@ -5,7 +5,7 @@ package com.holik.simpeg.shared.entity;
 //import com.holik.simpeg.server.error.validator.Author;
 
 //import com.holik.simpeg.server.error.validator.Author;
-import com.holik.simpeg.shared.error.validator.Author;
+//import com.holik.simpeg.shared.error.validator.Author;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,7 +25,7 @@ public class Book {
     @NotEmpty(message = "Please provide a name")
     private String name;
 
-    @Author
+   //@Author
     @NotEmpty(message = "Please provide a author")
     private String author;
 

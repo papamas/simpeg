@@ -9,16 +9,13 @@ import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialContainer;
 import gwt.material.design.client.ui.MaterialNavBar;
 import gwt.material.design.client.ui.MaterialSearch;
+import gwt.material.design.client.ui.MaterialSideNavPush;
 
 class ApplicationView extends ViewImpl implements ApplicationPresenter.MyView {
 
-    /*
     @UiField
-    HTMLPanel menu;
+    MaterialSideNavPush menu;
     
-    @UiField
-    HTMLPanel main;
-    */
     @UiField
     MaterialContainer container;
 
@@ -35,7 +32,7 @@ class ApplicationView extends ViewImpl implements ApplicationPresenter.MyView {
     ApplicationView(Binder binder) {
         initWidget(binder.createAndBindUi(this));
         bindSlot(ApplicationPresenter.SLOT_MAIN, container);
-        //bindSlot(ApplicationPresenter.SLOT_MENU, menu);
+        bindSlot(ApplicationPresenter.SLOT_MENU, menu);
         //bindSlot(ApplicationPresenter.SLOT_MAIN, main);
     }
 

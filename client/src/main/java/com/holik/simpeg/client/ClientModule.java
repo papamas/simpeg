@@ -16,7 +16,7 @@ public class ClientModule extends AbstractPresenterModule {
         
         bind(CurrentUser.class).asEagerSingleton();
         bindConstant().annotatedWith(RestApplicationPath.class).
-                to("http://127.0.0.1:8080");
+                to("http://127.0.0.1:8080/api");
 
         install(new DefaultModule.Builder()
                 .tokenFormatter(RouteTokenFormatter.class)

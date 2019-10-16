@@ -12,7 +12,7 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 
 public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView, ApplicationPresenter.MyProxy> {
 
-   // public static final PermanentSlot<MenuPresenter> SLOT_MENU = new PermanentSlot<>();
+    public static final PermanentSlot<MenuPresenter> SLOT_MENU = new PermanentSlot<>();
     public static final NestedSlot SLOT_MAIN = new NestedSlot();
     private final MenuPresenter menuPresenter;
     
@@ -26,13 +26,13 @@ public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView,
         this.menuPresenter = menuPresenter;
     }   
   
-    /*
+    
     @Override
     protected void onBind() {
         super.onBind();
         setInSlot(SLOT_MENU, menuPresenter);
     }
-    */
+    
     
 
     interface MyView extends View {

@@ -26,6 +26,7 @@ public class ProfilePresenter extends
             EventBus eventBus,
             MyView view,
             MyProxy proxy) {
-        super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
+        super(eventBus, view, proxy,
+                ApplicationPresenter.SLOT_MAIN);
     }
 }

@@ -88,23 +88,6 @@
                 <artifactId>gwt-maven-plugin</artifactId>
                 <version>${gwt.version}</version>
                 <configuration>
-                    <sourceLevel>1.8</sourceLevel>
-                    <module>com.holik.simpeg.SimpegAppboot</module>
-                    <extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
-                    <runTarget>index.html</runTarget>
-                    <persistentunitcachedir>${project.build.directory}</persistentunitcachedir>
-                    <webappDirectory>${output.dir}</webappDirectory>
-                    <hostedWebapp>${output.dir}</hostedWebapp>
-                    <deploy>${project.build.directory}/deploy</deploy>
-                    <generateJsInteropExports>true</generateJsInteropExports>
-                    <launcherDir>${project.build.directory}/classes/simpeg</launcherDir>
-                    <!--
-                    <codeServerPort>4456
-                    </codeServerPort>
-                    <style>DETAILED</style>!-->
-                 </configuration>
-                <!--
-                <configuration>
                         <strict>true</strict>
                         <logLevel>INFO</logLevel>
                         <runTarget>index.html</runTarget>
@@ -115,7 +98,7 @@
                         mvn clean spring-boot:run
                         <useCache>false</useCache>
                         !-->
-                <!--</configuration>!-->
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -163,6 +146,7 @@
             <classifier>sources</classifier>
             <scope>provided</scope>
         </dependency>
+               
         <!-- GWT !-->
         <dependency>
             <groupId>com.google.gwt</groupId>

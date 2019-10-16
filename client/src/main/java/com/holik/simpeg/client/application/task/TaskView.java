@@ -5,23 +5,29 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
-import org.gwtbootstrap3.client.ui.Heading;
-import org.gwtbootstrap3.client.ui.html.Paragraph;
-import org.gwtbootstrap3.client.ui.html.Text;
+import gwt.material.design.client.ui.MaterialLabel;
+import gwt.material.design.client.ui.MaterialRow;
+import gwt.material.design.client.ui.MaterialTextArea;
+import gwt.material.design.client.ui.MaterialTextBox;
 
 class TaskView extends ViewWithUiHandlers<TaskHandlers> implements TaskPresenter.MyView {
+    
     @UiField
-    Paragraph message;
+    MaterialLabel message;
+    
+    
     @UiField
-    HTMLPanel content;
+    MaterialRow content;
+    
     @UiField
-    Heading title;
+    MaterialTextBox title;
+    
+    
     @UiField
-    Text text;
+    MaterialTextArea text;
 
     private Task task;
 

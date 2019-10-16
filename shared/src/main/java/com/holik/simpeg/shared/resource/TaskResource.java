@@ -4,14 +4,14 @@ import com.holik.simpeg.shared.entity.Task;
 
 import javax.ws.rs.*;
 
-@Path("/task")
+@Path("/tasks")
 @Consumes("application/json")
 @Produces("application/json")
 public interface TaskResource {
 
     @GET
     Iterable<Task> getAllTasks();
-
+    
     @GET
     @Path("{id}")
     Task getTask(@PathParam("id") Long id);
@@ -26,4 +26,5 @@ public interface TaskResource {
     @DELETE
     @Path("{id}")
     Void deleteTask(@PathParam("id") Long id);
+    
 }

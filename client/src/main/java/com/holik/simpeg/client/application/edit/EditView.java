@@ -8,8 +8,8 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
-import org.gwtbootstrap3.client.ui.TextArea;
-import org.gwtbootstrap3.client.ui.TextBox;
+import gwt.material.design.client.ui.MaterialTextArea;
+import gwt.material.design.client.ui.MaterialTextBox;
 
 
 
@@ -18,9 +18,10 @@ class EditView extends
         implements EditPresenter.MyView {
     
     @UiField
-    TextBox title;
+    MaterialTextBox title;
+    
     @UiField
-    TextArea text;
+    MaterialTextArea text;
 
     private Task task;
 

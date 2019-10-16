@@ -47,7 +47,8 @@ public class Places {
 
         public void reveal(String nameToken) {
             placeManager.
-                    revealPlace(builder.nameToken(nameToken).build());
+                    revealPlace(builder.nameToken(nameToken).
+                            build());
         }
     }
 }

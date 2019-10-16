@@ -9,12 +9,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-//import com.nuvola.myproject.server.security.LoggedInChecker;
-//import com.nuvola.myproject.server.service.UserService;
-//import com.nuvola.myproject.shared.model.User;
 
 @Service
 public class UserServiceImpl implements UserService {

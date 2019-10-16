@@ -1,20 +1,19 @@
 package com.holik.simpeg.server;
 
 //import com.holik.simpeg.share.entity.Book;
-import com.holik.simpeg.server.repository.BookRepository;
-import com.holik.simpeg.shared.entity.Book;
-import java.math.BigDecimal;
-import org.springframework.boot.CommandLineRunner;
+//import com.holik.simpeg.server.resource.MyJaxRsResource;
+import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Profile;
 
 @SpringBootApplication
 @EntityScan({"com.holik.simpeg.shared.entity"})
 public class ServerApplication {
 
+    
+  
     public static void main(String[] args) {
         SpringApplication.run(ServerApplication.class, args);
     }

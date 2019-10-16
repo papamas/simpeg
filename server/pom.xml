@@ -14,17 +14,20 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.2.RELEASE</version>
+		<version>2.1.8.RELEASE</version>
 		<relativePath/> 
                 <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-                <output.dir>${project.build.directory}/${project.build.finalName}</output.dir>
-	</properties>
+	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	    <java.version>1.8</java.version>
+            <output.dir>${project.build.directory}/${project.build.finalName}</output.dir>
+	    <jax.rs.version>2.1.1</jax.rs.version>
+            <jersey.version>2.27</jersey.version>
+        
+        </properties>
 
 	<dependencies>
 		<dependency>
@@ -61,15 +64,12 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-security</artifactId>
                 </dependency>
-                
-                <!-- spring security test -->
+                <!--
                 <dependency>
-                    <groupId>org.springframework.security</groupId>
-                    <artifactId>spring-security-test</artifactId>
-                    <scope>test</scope>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-jersey</artifactId>
                 </dependency>
-
-
+                !-->             
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-devtools</artifactId>
@@ -81,7 +81,29 @@
                     <groupId>com.h2database</groupId>
                     <artifactId>h2</artifactId>
                     <scope>runtime</scope>
-		</dependency>                
+		</dependency>   
+                
+                <dependency>
+                    <groupId>javax.ws.rs</groupId>
+                    <artifactId>javax.ws.rs-api</artifactId>
+                    <version>${jax.rs.version}</version>
+                </dependency>
+                
+                <dependency>
+                    <groupId>org.glassfish.jersey.core</groupId>
+                    <artifactId>jersey-server</artifactId>
+                    <version>${jersey.version}</version>
+                </dependency>       
+                
+                    
+                <!--
+                                            
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-test</artifactId>
+                    <scope>test</scope>
+                </dependency>
+
 
                 <dependency>
                     <groupId>javax.servlet</groupId>
@@ -95,6 +117,7 @@
                     <scope>test</scope>
                 </dependency>
 
+                !-->
 
                     
 	</dependencies>
@@ -104,6 +127,7 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
+                    
                     <executions>
                         <execution>
                             <goals>
